@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 import './App.css';
+import Cat from './components/Cat';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  const [cat, setCat] = useState()
+
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await axios.get(`https://api.thecatapi.com/v1/images/search?has_breeds=1&api_key=live_mtl9hrEB87yKSbY11iXEkgFZtnsMeZtj2VhYQIJkQNOnRwIJkMleFZlmgHLyDF7p`)
+      if (response.status === 200) {
+        // console.log('youpi');
+        const data = response.data[0]
+        // console.log(data);
+        setCat(data)
+      }
+    }
+    loadData()
+  }, [])
+
+  return cat && (
+    <>
+    <Cat cat={cat}/>
+    </>
   );
 }
 
