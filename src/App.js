@@ -20,7 +20,7 @@ function App() {
    
 
   useEffect(() => {
-    loadData()
+     loadData()
   }, [])
 
   const handleClick = () => {
@@ -29,15 +29,29 @@ function App() {
 
   return cat && (
     <>
-    <div className="App">
+
+      <h1>THE CAT API</h1>
+
+    <div className="cat">
       <div className="image">
         <img src={cat.url} />
-      </div>       
-  
-        <button onClick={handleClick}>
-          MIAOU !
+      </div>   
+
+      <div className="informations">
+        <p>{cat.breeds[0].name}</p>
+        <p>{cat.breeds[0].origin}</p>
+        <p>{cat.breeds[0].temperament}</p>
+        <p>{cat.breeds[0].description}</p>
+
+      </div>
+      </div>    
+      <div className='button'>
+        <button className='miaou' onClick={handleClick}>
+          <p>MIAOU !</p>
         </button>
-    </div>
+
+      </div>
+    
     </>
   );
 }
