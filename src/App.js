@@ -28,7 +28,7 @@ function App() {
   }
 
   return cat && (
-    <>
+    <div className='App'>
 
       <h1>THE CAT API</h1>
 
@@ -38,10 +38,10 @@ function App() {
       </div>   
 
       <div className="informations">
-        <p>{cat.breeds[0].name}</p>
-        <p>{cat.breeds[0].origin}</p>
-        <p>{cat.breeds[0].temperament}</p>
-        <p>{cat.breeds[0].description}</p>
+        <p><strong>Name : </strong>{cat.breeds[0].name}</p>
+        <p><strong>Origin : </strong>{cat.breeds[0].origin}</p>
+        <p><strong>Temperament : </strong>{cat.breeds[0].temperament}</p>
+        <p><strong>Description : </strong>{cat.breeds[0].description}</p>
 
       </div>
       </div>    
@@ -52,7 +52,7 @@ function App() {
 
       </div>
     
-    </>
+    </div>
   );
 }
 
